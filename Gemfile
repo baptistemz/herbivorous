@@ -24,8 +24,13 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-  
-  
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara-webkit'
 end
 
 group :production do

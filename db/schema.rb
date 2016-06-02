@@ -11,10 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602121324) do
+ActiveRecord::Schema.define(version: 20160602140803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "days_from_start"
+    t.text     "action"
+    t.string   "time_needed"
+    t.integer  "vegetable_process_id"
+    t.integer  "seed_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "events", ["seed_id"], name: "index_events_on_seed_id", using: :btree
+  add_index "events", ["vegetable_process_id"], name: "index_events_on_vegetable_process_id", using: :btree
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "grade"
+    t.text     "comment"
+    t.integer  "vegetable_process_id"
+    t.integer  "user_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  add_index "reviews", ["vegetable_process_id"], name: "index_reviews_on_vegetable_process_id", using: :btree
+
+  create_table "seeds", force: :cascade do |t|
+    t.string   "kind"
+    t.date     "term_date"
+    t.date     "planting_date"
+    t.integer  "vegetable_process_id"
+    t.integer  "user_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "seeds", ["user_id"], name: "index_seeds_on_user_id", using: :btree
+  add_index "seeds", ["vegetable_process_id"], name: "index_seeds_on_vegetable_process_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -29,9 +67,28 @@ ActiveRecord::Schema.define(version: 20160602121324) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "pseudo"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "vegetable_processes", force: :cascade do |t|
+    t.integer  "maturation_length"
+    t.string   "climate"
+    t.string   "environment"
+    t.integer  "difficulty"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_foreign_key "events", "seeds"
+  add_foreign_key "events", "vegetable_processes"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "vegetable_processes"
+  add_foreign_key "seeds", "users"
+  add_foreign_key "seeds", "vegetable_processes"
 end
