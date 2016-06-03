@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
+gem 'rails-api'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -16,6 +17,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+gem 'high_voltage', '~> 3.0.0'
 
 group :development, :test do
   gem 'binding_of_caller'
