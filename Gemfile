@@ -10,6 +10,7 @@ gem 'devise'
 gem 'redis'
 gem 'rails-api'
 
+gem 'enumerize'
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'

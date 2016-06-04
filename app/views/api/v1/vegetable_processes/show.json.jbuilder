@@ -1,18 +1,22 @@
-  project ||= @project
+json.extract! @vegetable_process, :id, :kind, :maturation_length, :climate, :environment, :difficulty
 
-  json.id project['id']
-  json.name project['name']
-  json.source_name project['source_name']
-  json.source_identifier project['source_identifier']
-  json.task_count project['task_count']
-  if project.class == Hash
-    json.active
-  Project.find(project['id']).active_for_user?(@api_key.user)
-  else
-    json.active project.active_for_user?(@api_key.user)
-  end
+# vegetable_process ||= @vegetable_process
 
-  if project.class == ActiveRecord::Base && !project.persisted? &&
-  !project.valid?
-    json.errors project.errors.messages
-  end
+# json.vegetable_process do
+#   json.id vegetable_process[:id]
+#   json.name vegetable_process[:maturation_length]
+#   json.source_name vegetable_process[:climate]
+#   json.source_identifier vegetable_process[:environment]
+#   json.task_count vegetable_process[:difficulty]
+#   # if vegetable_process.class == Hash
+#   #   json.active
+#   # VegetableProcess.find(vegetable_process['id']).active_for_user?(@api_key.user)
+#   # else
+#   #   json.active vegetable_process.active_for_user?(@api_key.user)
+#   # end
+
+#   # if vegetable_process.class == ActiveRecord::Base && !vegetable_process.persisted? &&
+#   # !vegetable_process.valid?
+#   #   json.errors vegetable_process.errors.messages
+#   # end
+# end
