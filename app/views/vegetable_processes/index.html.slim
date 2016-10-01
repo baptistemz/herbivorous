@@ -1,0 +1,3 @@
+h1 Que voulez-vous cultiver ?
+= @vegetable_processes.each do |v_p|
+  = render partial: 'vegetable_process', locals: {vegetable_process: v_p}

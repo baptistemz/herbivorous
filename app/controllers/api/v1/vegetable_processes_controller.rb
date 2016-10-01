@@ -1,6 +1,6 @@
 module Api
   module V1
-    class VegetableProcessesController < Api::V1::BaseController
+    class VegetableProcessesController < ActionController::Base
       def index
         @vegetable_processes = VegetableProcess.all
         render :index
