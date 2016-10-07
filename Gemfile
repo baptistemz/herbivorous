@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.3.0'
 
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 gem 'puma'
@@ -13,6 +13,9 @@ gem 'searchkick'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'slim'
+gem "carrierwave"
+gem "mini_magick"
+gem "fog-aws"
 
 gem 'enumerize'
 gem 'sass-rails'
@@ -23,6 +26,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'high_voltage', '~> 3.0.0'
+
 
 group :development, :test do
   gem 'binding_of_caller'

@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   belongs_to :vegetable_process
   validates_presence_of :days_from_start, :action, :time_needed
   validates_numericality_of :days_from_start, :time_needed

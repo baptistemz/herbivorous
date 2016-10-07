@@ -1,0 +1,31 @@
+{
+  "name": "herbivorous",
+  "version": "1.0.0",
+  "description": "Herbivorous, built in React&Flux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baptistemz/herbivorous.git"
+  },
+  "author": "baptistemz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baptistemz/herbivorous/issues"
+  },
+  "homepage": "https://github.com/baptistemz/herbivorous#readme",
+  "dependencies": {
+    "babel-loader": "^6.2.5",
+    "events": "^1.1.1",
+    "flux": "^3.0.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^2.8.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5"
+  }
+}

@@ -3,7 +3,13 @@
  * These are examples of utilities classes
  * Feel free to change them and create your own
  * ------------------------------------- */
-
+a:hover{
+  text-decoration: none;
+  cursor: pointer
+}
+.selected {
+  color: $blue
+}
 // Paddings
 .padded {
   padding-top: 5em;
@@ -22,4 +28,21 @@
 }
 .bg-dark-blue {
   background: #3b5998;
+}
+
+.top-right-absolute {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-align: center
+}
+
+.space-between{
+  display:flex;
+  justify-content: space-between
+}
+
+.space-around{
+  display:flex;
+  justify-content: space-around
 }

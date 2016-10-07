@@ -7,15 +7,15 @@ Rails.application.routes.draw do
         root to: 'pages#home'
 
         devise_for :users
-        resource :user, only: [:show] do
-          # resources :seeds, only[:index, :show]
+        namespace :account do
+          resources :seeds, only: [:index, :show]
           resources :vegetable_processes, only: [:index, :show]
         end
         resources :vegetable_processes, only: [:index, :show] do
           resource :calendar
-        end
-        resources :seeds, only: [:index, :show] do
-          resources :events, only: [:index]
+          resources :seeds, only: [:create]
+          resources :stars, only: [:create, :destroy]
+          get 'identify_star_and_destroy'
         end
       end
     end

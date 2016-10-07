@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160604154844) do
+ActiveRecord::Schema.define(version: 20161005192807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,27 +27,24 @@ ActiveRecord::Schema.define(version: 20160604154844) do
     t.index ["vegetable_process_id"], name: "index_events_on_vegetable_process_id", using: :btree
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer  "grade"
-    t.text     "comment"
-    t.integer  "vegetable_process_id"
-    t.integer  "user_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
-    t.index ["vegetable_process_id"], name: "index_reviews_on_vegetable_process_id", using: :btree
-  end
-
   create_table "seeds", force: :cascade do |t|
-    t.string   "kind"
     t.date     "term_date"
     t.date     "planting_date"
     t.integer  "vegetable_process_id"
     t.integer  "user_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "name"
     t.index ["user_id"], name: "index_seeds_on_user_id", using: :btree
     t.index ["vegetable_process_id"], name: "index_seeds_on_vegetable_process_id", using: :btree
+  end
+
+  create_table "stars", force: :cascade do |t|
+    t.integer  "vegetable_process_id"
+    t.integer  "stared_by"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["vegetable_process_id"], name: "index_stars_on_vegetable_process_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160604154844) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
+    t.string   "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -80,12 +78,12 @@ ActiveRecord::Schema.define(version: 20160604154844) do
     t.datetime "updated_at",        null: false
     t.string   "kind"
     t.string   "name"
+    t.string   "photo"
   end
 
   add_foreign_key "events", "seeds"
   add_foreign_key "events", "vegetable_processes"
-  add_foreign_key "reviews", "users"
-  add_foreign_key "reviews", "vegetable_processes"
   add_foreign_key "seeds", "users"
   add_foreign_key "seeds", "vegetable_processes"
+  add_foreign_key "stars", "vegetable_processes"
 end
